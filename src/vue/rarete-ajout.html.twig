@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Ajouter une rareté {% endblock %}
+{% block contenu %}
+
+<div class="container">
+    <h2>Ajouter unz rareté</h2>
+
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="inputLibelle">Nom de la rarete :</label>
+            <input type="text" class="form-control" id="nom" name="inputLibelle" placeholder="Entrez le nom de la rareté" required>
+        </div>
+        <button type="submit"  name="btAjouter" class="btn btn-primary">Ajouter la rareté</button>
+    </form>
+</div>
+
+{% endblock %}

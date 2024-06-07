@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Ajouter un lien {% endblock %}
+{% block contenu %}
+
+<div class="container">
+    <h2>Ajouter un lien</h2>
+
+
+     <div class="form-group">
+            <label for="inputLibelle" class="sr-only"></label>
+            Nom du lien :<input type="text" class="form-control" id="nom" name="inputLibelle" placeholder="Entrez le nom du lien" value="{{form.lien.libelle}}" required>
+        </div>
+        <div class="form-group">
+            <label for="inputDescrip1" class="sr-only"></label>
+            lvl 1 :<input type="text" class="form-control" id="inputDescrip1" name="inputDescrip1" placeholder="Entrez le passif du lien lvl 1" value="{{form.lien.descrip1}}" required>
+        </div>
+        <div class="form-group">
+            <label for="inputDescrip10" class="sr-only"></label>
+            lvl 10 :<input type="text" class="form-control" id="inputDescrip10" name="inputDescrip10" placeholder="Entrez le passif du lien lvl 10" value="{{form.lien.descrip10}}" required>
+        </div>
+        <button type="submit"  name="btAjouter" class="btn btn-primary">Ajouter le personnage</button>
+    </form>
+</div>
+
+{% endblock %}

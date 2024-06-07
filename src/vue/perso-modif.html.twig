@@ -1,0 +1,67 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Modifier un personnage {% endblock %}
+{% block contenu %}
+<h1>Modifier un personnage</h1>
+
+{% if form.perso is defined %}
+ {% if form.perso != null %}
+
+ <form class="form-signin" action="index.php?page=persoModif" method="post" enctype="application/x-www-form-urlencoded">
+
+        <div class="form-group">
+            <label for="inputNom" class="sr-only"></label>
+            Nom du personnage :<input type="text" class="form-control" id="nom" name="inputNom" placeholder="Modifier le nom du personnage" value="{{form.perso.nom}}" required>
+        </div>
+        <div class="form-group">
+            <label for="inputTitre" class="sr-only"></label>
+            Titre :<input type="text" class="form-control" id="titre" name="inputTitre" placeholder="Modifier le nom du personnage" value="{{form.perso.titre}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inputType" class="sr-only"></label>
+            Type :<input type="number" class="form-control" id="type" name="inputType" placeholder="Modifier le type du personnage" value="{{form.perso.type}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inputRarete" class="sr-only"></label>
+            Rareté :<input type="number" class="form-control" id="rarete" name="inputRarete" placeholder="Modifier la rareté du personnage" value="{{form.perso.rarete}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="photo" class="sr-only"></label>
+            Photo :<input type="file" name="photo" id="photo" class="form-control" value="{{form.produit.photo}}"></input>
+        </div>
+
+{% if form.produit.photo is not empty %}
+<div class="form-group">
+    <img src="images/{{form.produit.photo}}" />
+</div>
+{% else %}        
+<div class="form-group">
+    <img src="images/image-non-disponible.jpg" />
+</div>
+{% endif %}
+
+<input type="hidden" name="id" value="{{ form.perso.id }}"/>
+
+<button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifier">Modifier</button>
+
+
+{% else %}
+ <h2 class="alert alert-danger" role="alert">{{ form.message }}</h2>
+ <a href="index.php?page=perso">Retourner sur la liste des personnages</a>
+ {% endif %}
+{% else %}
+
+ {% if form.valide == true %}
+ <h1 class="h3 mb-3 font-weight-normal">{{ form.message }} </h1>
+ <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=perso">Retourner sur la liste des personnages</a></h1>
+ {% else %}
+ <h1 class="alert alert-danger" role="alert">{{ form.message }}</h1>
+ <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=perso">Retourner sur la liste des personnages</a></h1>
+ {% endif %}
+{% endif %}
+</form>
+
+{% endblock %}
+ 

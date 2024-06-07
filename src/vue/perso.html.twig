@@ -1,0 +1,74 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ parent() }} - Liste des personnages{% endblock %}
+{% block contenu %}
+<h1 class="text-center">Liste des personnages</h1>
+
+{% if form.etat is defined %}
+    {% if form.etat == true %}
+        <h1 class="h3 mb-3 font-weight-normal">Suppression réussie</h1>
+    {% else %}
+        <h1 class="alert alert-danger" role="alert">Problème d'insertion</h1>
+    {% endif %}
+{% endif %}
+
+{% if liste | length > 0 %}
+    <form class="form-signin" action="index.php?page=perso" method="post" enctype="application/x-www-form-urlencoded">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Rareté</th>
+                        <th scope="col"><a href="index.php?page=persoAjout"><button type="button" class="btn btn-primary">Ajouter</button></a></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in liste %}
+                        <tr>
+                            <td>{{ p.id }}</td>
+                            <td>{{ p.nom }}</td>
+                            <td>{{ p.titre }}</td>
+                            <td>{{ p.type }}</td>
+                            <td>{{ p.rarete }}</td>
+                            <td><a class="btn btn-outline-primary" href="index.php?page=persoModif&id={{ p.id }}">Modifier</a></td>
+                            <td><a class="btn btn-outline-danger" href="index.php?page=perso&id={{ p.id }}">Supprimer</a></td>
+                            <td><input type="checkbox" name="cocher[]" id="cocher[]" value="{{ p.id }}" /></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">Aucun personnage trouvé.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-lg btn-danger btn-block w-25 mx-auto" type="submit" name="btSupprimer">Supprimer</button>
+    </form>
+
+    {% set nb = form.nbpages %}
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center m-4 p-4">
+            <li class="page-item {% if form.nopage == 0 %} disabled {% endif %}">
+                <a class="page-link" href="index.php?page=perso&nopage={{ 0 }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+            </li>
+            {% for i in 1..nb %}
+                <li class="page-item {% if i == form.nopage + 1 %} active {% endif %}">
+                    <a class="page-link" href="index.php?page=perso&nopage={{ i - 1 }}">{{ i }}<span class="sr-only"></span></a>
+                </li>
+            {% endfor %}
+            <li class="page-item {% if form.nopage == form.nbpages - 1 %}disabled{% endif %}">
+                <a class="page-link" href="index.php?page=perso&nopage={{ nb - 1 }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span></a>
+            </li>
+        </ul>
+    </nav>
+{% else %}
+    <h1 class="text-center">Il n'y a pas de personnage.</h1>
+{% endif %}
+{% endblock %}

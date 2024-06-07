@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- S'inscrire {% endblock %}
+
+{% block contenu %}
+{% if form.valide is defined %}
+  {% if form.valide == true %}
+    <h1>Inscription réussie</h1>
+    <h1>Voici votre identifiant : {{form.email}}</h1>
+    {% if form.role == 1 %}
+    <h1>Vous êtes administrateur du site</h1>
+    {% else %}
+    <h1>Vous êtes un client du site </h1>
+    {% endif %}
+  {% else %}
+  <h1>Echec de l'inscription</h1>
+  <h1>Erreur : {{form.message}}</h1>
+  <h1><a href="index.php?page=inscrire">Retourner sur la page d'inscription</a></h1>
+  {% endif %}
+{% else %}
+
+<form action="index.php?page=inscrire" method="post" enctype="application/x-www-form- urlencoded">
+<h1>Inscrivez-vous sur Projet Wallis</h1>
+
+<div class="form-group">
+  <label for="inputEmail" class="sr-only">Email:</label>
+  Email:<input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>
+</div>
+
+<div class="form-group">
+  <label for="inputNom" class="sr-only">Nom:</label>
+  Nom:<input type="nom" id="inputNom" name="inputNom" class="form-control" placeholder="Nom" required>
+</div>
+
+<div class="form-group">
+  <label for="inputPrenom" class="sr-only">Prenom:</label>
+  Prenom:<input type="prenom" id="inputPrenom" name="inputPrenom" class="form-control" placeholder="Prenom" required autofocus>
+</div>
+
+<div class="form-group">
+  <label for="inputPassword" class="sr-only">Mot de passe:</label>
+  Mot de passe:<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
+</div>
+
+<div class="form-group">
+  <label for="inputPassword2" class="sr-only">Mot de passe:</label>
+  Confirmer le mot de passe:<input type="password" id="inputPassword2" name="inputPassword2" class="form-control" placeholder="Confirmation mot de passe" required>
+</div>
+
+
+<button class="btn btn-lg btn-primary btn-block" type="submit" name="btInscrire">S'inscrire</button>
+</form>
+
+ {% endif %}
+{% endblock %}

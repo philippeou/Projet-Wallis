@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Connexion {% endblock %}
+
+{% block contenu %}
+{% if conn.valide is defined %}
+  {% if conn.valide == true %}
+    <h1>connexion réussie</h1>
+    <h1>Voici votre login : {{conn.login}}</h1>
+  {% else %}
+  <h1>Echec de la connexion</h1>
+  <h1>Erreur : {{conn.message}}</h1>
+  <h1><a href="index.php?page=connexion">Retourner sur la page de connexion</a></h1>
+  {% endif %}
+{% else %}
+<form action="index.php?page=connexion" method="post" enctype="application/x-www-form- urlencoded">
+<h1>Connectez-vous sur Projet Wallis </h1>
+
+<div class="form-group">
+  <label for="inputEmail" class="sr-only">Login:</label>
+  Login:<input type="login" id="inputEmail" name="inputEmail" class="form-control" placeholder="Login" required autofocus>
+</div>
+
+<div class="form-group">
+  <label for="inputPassword" class="sr-only">Mot de passe:</label>
+  Mot de passe:<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
+</div>
+
+<button class="btn btn-lg btn-primary btn-block" type="submit" name="btConnecter">Connexion</button>
+
+</form>
+
+
+
+{% endif %}
+{% endblock %}

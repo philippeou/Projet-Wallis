@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Accueil {% endblock %}
+{% block contenu %} 
+
+
+<div class="container mt-4">
+    <div class="jumbotron jumbotron-fluid text-center text-white bg-primary">
+        <div class="container">
+            <h1 class="display-4">Bienvenue sur Projet Wallis</h1>
+            <p class="lead">Votre source d'information pour Dragon Ball Z Dokkan Battle</p>
+        </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Personnages</h5>
+                        <p class="card-text">Découvrez les personnages de Dragon Ball Z Dokkan Battle.</p>
+                        <a href="index.php?page=recherche&recherche=" class="btn btn-primary">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

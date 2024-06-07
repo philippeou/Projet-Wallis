@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} - Fiche de personnage {% endblock %}
+{% block contenu %}
+
+{% if form.perso is defined %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+        <h1>{{ form.perso.nom }}</h1>
+        <a href="index.php?page=recherche&recherche=" class="btn btn-secondary">Retour</a>
+    </div>
+    <h4>{{ form.perso.titre }}</h4>
+
+    <div class="row">
+        {% if form.perso.photo is not empty %}
+            <div class="col-md-6">
+                <img src="images/{{ form.perso.photo }}" alt="{{ form.perso.nom }}" class="img-fluid">
+            </div>
+        {% else %}
+            <div class="col-md-6">
+                <img src="images/image-non-disponible.jpg" class="img-fluid">
+            </div>
+        {% endif %}
+        <div class="col-md-6">
+            <p>Rareté: {{ form.perso.rarete }} </p>
+            <p>Type: {{ form.perso.type }}</p>
+            {# <p>Liens:
+                {% for lien in form.perso.liens %}
+                    {{ lien }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p>Catégories:
+                {% for cat in form.perso.cat %}
+                    {{ form.perso.cat }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p> #}
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="alert alert-danger" role="alert">
+    Le perso demandé n'existe pas !
+</div>
+{% endif %}
+{% endblock %}

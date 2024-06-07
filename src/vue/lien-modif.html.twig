@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Modifier un lien {% endblock %}
+{% block contenu %}
+<h1>Modifier un lien</h1>
+
+{% if form.lien is defined %}
+ {% if form.lien != null %}
+
+ <form class="form-signin" action="index.php?page=lienModif" method="post" enctype="application/x-www-form-urlencoded">
+
+        <div class="form-group">
+            <label for="inputLibelle" class="sr-only"></label>
+            Nom du lien :<input type="text" class="form-control" id="nom" name="inputLibelle" placeholder="Modifier le nom du lien" value="{{form.lien.libelle}}" required>
+        </div>
+        <div class="form-group">
+            <label for="inputDescrip1" class="sr-only"></label>
+            lvl 1 :<input type="text" class="form-control" id="inputDescrip1" name="inputDescrip1" placeholder="Modifier le prix du personnage" value="{{form.lien.descrip1}}" required>
+        </div>
+        <div class="form-group">
+            <label for="inputDescrip10" class="sr-only"></label>
+            lvl 10 :<input type="text" class="form-control" id="inputDescrip10" name="inputDescrip10" placeholder="Modifier le prix du personnage" value="{{form.lien.descrip10}}" required>
+        </div>
+
+<input type="hidden" name="id" value="{{ form.lien.id }}"/>
+
+<button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifier">Modifier</button>
+
+
+{% else %}
+ <h2 class="alert alert-danger" role="alert">{{ form.message }}</h2>
+ <a href="index.php?page=lien">Retourner sur la liste des liens</a>
+ {% endif %}
+{% else %}
+
+ {% if form.valide == true %}
+ <h1 class="h3 mb-3 font-weight-normal">{{ form.message }} </h1>
+ <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=liens">Retourner sur la liste des liens</a></h1>
+ {% else %}
+ <h1 class="alert alert-danger" role="alert">{{ form.message }}</h1>
+ <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=liens">Retourner sur la liste des liens</a></h1>
+ {% endif %}
+{% endif %}
+</form>
+
+{% endblock %}
+ 

@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }}- Ajouter un personnage {% endblock %}
+{% block contenu %}
+
+<div class="container">
+    <h2>Ajouter un personnage</h2>
+
+
+    <form class="form-signin" action="index.php?page=persoAjout" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="inputNom">Nom du personnage :</label>
+            <input type="text" class="form-control" id="nom" name="inputNom" placeholder="Entrez le nom du personnage" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inputTitre">Titre :</label>
+            <input type="text" class="form-control" id="titre" name="inputTitre" placeholder="Entrez le titre du personnage" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inputType">Type :</label>
+            <input type="text" class="form-control" id="type" name="inputType" placeholder="Entrez le type du personnage" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inputRarete">Rareté :</label>
+            <input type="text" class="form-control" id="rarete" name="inputRarete" placeholder="Entrez la rareté du personnage" required>
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Photo :</label>
+            <input type="file" name="photo" id="photo" class="form-control"/>
+        </div>
+
+        <button type="submit"  name="btAjouter" class="btn btn-primary">Ajouter le personnage</button>
+    </form>
+</div>
+
+{% endblock %}
