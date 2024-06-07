@@ -1,0 +1,52 @@
+* {
+    font-family: Helvetica, sans-serif;
+  }
+
+.espace1 {
+    padding-bottom: 30px;
+}
+
+.xs_img{
+    max-width: 55px;
+    max-height: 55px;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex-grow: 1;
+} 
+
+body {
+    background-color: grey !important;
+}
+
+.jumbotron {
+    background: url('banner.jpg') center center no-repeat;
+    background-size: cover;
+    color: white;
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Modifier la couleur de fond des champs d'entrée */
+input.form-control {
+    background-color: #f0f8ff; /* Couleur de fond */
+    border: 1px solid #ccc;
+    color: #333; /* Couleur du texte */
+}
+
+/* Pour changer la couleur de fond des champs d'entrée au focus */
+input.form-control:focus {
+    background-color: #e0ffff; /* Couleur de fond au focus */
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
